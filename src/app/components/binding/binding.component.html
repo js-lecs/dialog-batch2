@@ -1,0 +1,7 @@
+<input class="form-control" type="text" [(ngModel)]="name">
+<h4>The name is, {{name}}</h4>
+
+Disable button,
+<input type="checkbox" [(ngModel)]="isButtonDisabled">
+
+<button class="btn btn-info" [disabled]="isButtonDisabled" (click)="greet()"> Greet!</button>

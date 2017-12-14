@@ -1,0 +1,19 @@
+<h3> First component works!</h3>
+
+<button class="btn" (click)="tabChange('binding')" [ngClass]="{'btn-info': activeTab === 'binding'}"> Binding</button>
+<button class="btn" id="jqueryExample" (click)="tabChange('cricketers')" [ngClass]="{'btn-info': activeTab === 'cricketers'}"> Cricketers</button>
+
+
+<app-binding [hidden]="activeTab !== 'binding'"></app-binding>
+
+
+<app-cricketers *ngIf="activeTab === 'cricketers'"></app-cricketers>
+
+<div class="row">
+  <div class="col-sm-12 col-md-8">
+    <h1> First half</h1>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <h1> Second half</h1>
+  </div>
+</div>

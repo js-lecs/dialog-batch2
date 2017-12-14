@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FirstComponent } from './components/first/first.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  @ViewChild('first') firstComponent: FirstComponent;
+
+  constructor() { }
+
+  callChild() {
+    this.firstComponent.greet();
+  }
 }
