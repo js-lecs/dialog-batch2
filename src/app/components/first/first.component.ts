@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AfterContentInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 declare var $: any;
-export interface cricketer {
-  name: String;
-  type: String;
+export class cricketer {
+  constructor(public name, public type){
+
+  }
 }
 
 @Component({

@@ -6,9 +6,17 @@
     <td>Type</td>
   </thead>
   <tbody>
-    <tr *ngFor="let x of cricketers">
+    <tr *ngFor="let x of cricketers; let i = index">
       <td> {{x.name}}</td>
       <td> {{x.type}}</td>
+      <td>
+        <button class="btn btn-info" (click)="selectCricketer(x, i)"> View</button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+
+<button class="btn btn-success" (click)="clearSelection()"> Clear Selection</button>
+
+<app-cricketer-view *ngIf="activeIndex > -1" #viewCricketerComponent [cricketer]="activeCricketer" (nameEmitter)="doSomethingwithEmit($event)"></app-cricketer-view>
