@@ -1,20 +1,30 @@
 <hr>
-<h3>Cricketers</h3>
+<h3>Cricketers Route Parameters</h3>
 <table class="table table-hover">
   <thead>
     <td> Name</td>
     <td>Type</td>
+    <td colspan="3"> Actions</td>
   </thead>
   <tbody>
     <tr *ngFor="let x of cricketers; let i = index">
       <td> {{x.name}}</td>
       <td> {{x.type}}</td>
       <td>
-        <button class="btn btn-info" (click)="selectCricketer(x, i)"> View</button>
+        <a class="btn btn-info" [routerLink]="['/','app','cricketers', i]"> View from Params</a>
       </td>
+      <td>
+        <button class="btn btn-success" (click)="selectCricketer(x, i)"> View from Component</button>
+      </td>
+      <td>
+        <a class="btn btn-warning" routerLink="queryParams?id={{i}}"> View from Query Params</a>
+      </td>
+
     </tr>
   </tbody>
 </table>
+
+
 
 
 <button class="btn btn-success" (click)="clearSelection()"> Clear Selection</button>

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, SimpleChanges } from '@angular/core';
 import { cricketer } from '../first/first.component';
 import { CricketerViewComponent } from './cricketer-view/cricketer-view.component';
 import { DoCheck, OnChanges, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { CricketerService } from '../../services/cricketer.service';
 
 
 @Component({
@@ -13,23 +14,15 @@ export class CricketersComponent {
 
 
 
+
   @ViewChild('viewCricketerComponent') viewCricketerComponent: CricketerViewComponent;
   activeCricketer: cricketer;
   activeIndex = -1;
-  cricketers: Array<cricketer> = [
-    {
-      name: 'Sanath Jayasuriya',
-      type: 'All rounder'
-    },
-    {
-      name: 'Chaminda Vaas',
-      type: 'bowler'
-    },
-    {
-      name: 'Mahela Jayawardane',
-      type: 'batsman'
-    }
-  ];
+  cricketers: Array<cricketer>;
+  constructor(private cricketerService: CricketerService) {
+    this.cricketers = this.cricketerService.cricketers;
+  }
+
 
 
   selectCricketer(cricketer: cricketer, index) {

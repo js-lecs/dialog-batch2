@@ -13,6 +13,10 @@ import { CricketerViewComponent } from './components/cricketers/cricketer-view/c
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './components/login/login.component';
+import { CricketerService } from './services/cricketer.service';
+import { EditCricketerComponent } from './components/cricketers/edit-cricketer/edit-cricketer.component';
+import { EditCricketerQueryParamComponent } from './components/cricketers/edit-cricketer-query-param/edit-cricketer-query-param.component';
+import { LoginActivateGuard } from './gurads/login.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { LoginComponent } from './components/login/login.component';
     CricketerViewComponent,
     HomeComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    EditCricketerComponent,
+    EditCricketerQueryParamComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,10 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
+  providers: [
+    CricketerService,
+    LoginActivateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,26 +15,26 @@ export class CricketerViewComponent implements OnInit, DoCheck, OnChanges, OnDes
   @Output() nameEmitter: EventEmitter<String> = new EventEmitter();
 
   constructor() {
-    console.log("constructor Called");
+    console.log('constructor Called');
 
   }
 
   ngOnInit() {
-    console.log("ngOnint called");
+    console.log('ngOnint called');
   }
 
   ngDoCheck(): void {
-    console.log("ngDoCheck called");
+    console.log('ngDoCheck called');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("ngOnc Changes called", changes);
+    console.log('ngOnc Changes called', changes);
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
     }, 3000);
   }
   ngOnDestroy(): void {
-    console.log("On Destroy Called");
+    console.log('On Destroy Called');
   }
 
 
