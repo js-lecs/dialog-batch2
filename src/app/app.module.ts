@@ -17,6 +17,8 @@ import { CricketerService } from './services/cricketer.service';
 import { EditCricketerComponent } from './components/cricketers/edit-cricketer/edit-cricketer.component';
 import { EditCricketerQueryParamComponent } from './components/cricketers/edit-cricketer-query-param/edit-cricketer-query-param.component';
 import { LoginActivateGuard } from './gurads/login.guard';
+import { CricketerViewDeactivateGurad } from './gurads/deactivate.guard';
+import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { LoginActivateGuard } from './gurads/login.guard';
     LayoutComponent,
     LoginComponent,
     EditCricketerComponent,
-    EditCricketerQueryParamComponent
+    EditCricketerQueryParamComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { LoginActivateGuard } from './gurads/login.guard';
   ],
   providers: [
     CricketerService,
-    LoginActivateGuard
+    LoginActivateGuard,
+    CricketerViewDeactivateGurad
   ],
   bootstrap: [AppComponent]
 })

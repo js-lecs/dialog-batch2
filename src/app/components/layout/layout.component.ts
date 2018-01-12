@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 export class LayoutComponent implements OnInit {
 
   constructor(private route: Router) {
-    setTimeout(() => {
-      this.logout();
-    }, 7000);
+    // auto logout after 7 seconds
+    // setTimeout(() => {
+    //   this.logout();
+    // }, 7000);
   }
 
   ngOnInit() {

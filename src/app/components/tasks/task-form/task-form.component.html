@@ -1,0 +1,27 @@
+<div class="container">
+  <form class="form-horizontal" [formGroup]="taskFrom" (submit)="submit()">
+
+    <div class="form-group">
+      <label for=""> Title</label>
+      <input formControlName="title" type="text" class="form-control">
+
+      <div *ngIf="taskFrom.controls['title'].touched">
+        {{taskFrom.controls['title'].errors | json}}
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for=""> Description</label>
+      <textarea required formControlName="description" type="text" class="form-control"></textarea>
+      <div *ngIf="taskFrom.controls['description'].touched">
+        {{taskFrom.controls['description'].errors | json}}
+      </div>
+    </div>
+
+    <div class="form-group">
+
+      <button [disabled]="!taskFrom.valid" class="btn btn-info"> Submit</button>
+    </div>
+  </form>
+
+</div>

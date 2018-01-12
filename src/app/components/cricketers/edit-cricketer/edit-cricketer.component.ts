@@ -9,7 +9,7 @@ import { CricketerService } from '../../../services/cricketer.service';
   styleUrls: ['./edit-cricketer.component.scss']
 })
 export class EditCricketerComponent implements OnInit {
-
+  cricketerName: String = '';
   cricketer: cricketer;
   constructor(private route: ActivatedRoute,
     private cricketerService: CricketerService) {
@@ -19,6 +19,10 @@ export class EditCricketerComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  isDirty(): Boolean {
+    return this.cricketerName !== '';
   }
 
 }

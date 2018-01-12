@@ -7,6 +7,8 @@ import { CricketerViewComponent } from './components/cricketers/cricketer-view/c
 import { EditCricketerComponent } from './components/cricketers/edit-cricketer/edit-cricketer.component';
 import { EditCricketerQueryParamComponent } from './components/cricketers/edit-cricketer-query-param/edit-cricketer-query-param.component';
 import { LoginActivateGuard } from './gurads/login.guard';
+import { CricketerViewDeactivateGurad } from './gurads/deactivate.guard';
+import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
 
 const LAYOUT_ROUTES: Routes = [{
     path: 'home',
@@ -17,12 +19,17 @@ const LAYOUT_ROUTES: Routes = [{
     component: CricketersComponent
 },
 {
+    path: 'tasks',
+    component: TaskFormComponent
+},
+{
     path: 'cricketers/queryParams',
     component: EditCricketerQueryParamComponent
 },
 {
     path: 'cricketers/:id',
-    component: EditCricketerComponent
+    component: EditCricketerComponent,
+    canDeactivate: [CricketerViewDeactivateGurad]
 },
 
 {

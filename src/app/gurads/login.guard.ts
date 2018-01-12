@@ -16,7 +16,6 @@ export class LoginActivateGuard implements CanActivate {
         if (localStorage.getItem('loggedIn') === 'true') {
             return true;
         } else {
-           
             // this.route.navigate(['/', 'login']);
             return false;
         }
