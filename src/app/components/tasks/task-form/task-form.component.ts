@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { FormControl } from '@angular/forms/src/model';
+import { FormGroup, Validators, FormBuilder, FormArray, FormControl } from '@angular/forms';
+
 
 
 @Component({
@@ -12,13 +12,22 @@ export class TaskFormComponent implements OnInit {
 
   taskFrom: FormGroup;
   validationString: String = 'abc';
+  genderList = [
+    { code: 'M', displayName: 'Male' },
+    { code: 'F', displayName: 'Female' }
+  ];
+
+  editUserObj = {
+    username: 'nilesh',
+    email: 'aaa@a.com'
+  };
 
   constructor(private fb: FormBuilder) {
     this.initForm();
     // this.demoCallback((str) => { alert(str); });
     this.demoPromise()
       .then((data: any) => {
-        alert(data.message);
+        // alert(data.message);
       }, (err) => {
         console.log(err);
       });
@@ -29,14 +38,28 @@ export class TaskFormComponent implements OnInit {
 
   initForm() {
     this.taskFrom = this.fb.group({
+      'user': this.fb.group({
+        'username': ['', [Validators.required]],
+        'email': ['', [Validators.required, Validators.email]],
+        'gender': ['M', [Validators.required]]
+      }),
       'title': ['',
         [Validators.required, Validators.maxLength(15), this.customValidator.bind(this)],
         [this.customAsyncValidator.bind(this)]
       ],
-      'description': ['', [Validators.required], [this.customAsyncValidator.bind(this)]]
+
+      'description': ['', [Validators.required], [this.customAsyncValidator.bind(this)]],
+      'subTasks': this.fb.array([
+        ['', [Validators.required]],
+        ['', [Validators.required]]
+      ])
     });
   }
 
+  addNewSubTaskControl() {
+    (<FormArray>this.taskFrom.controls['subTasks'])
+      .insert((<FormArray>this.taskFrom.controls['subTasks']).length, new FormControl('', [Validators.required]));
+  }
   submit() {
     console.log(this.taskFrom.value);
   }
@@ -77,7 +100,7 @@ export class TaskFormComponent implements OnInit {
   async resolveAsyncPromise() {
     try {
       const obj: any = await this.demoPromise();
-      alert(obj.message);
+      // alert(obj.message);
     } catch (err) {
       console.log(err);
     }
@@ -87,7 +110,7 @@ export class TaskFormComponent implements OnInit {
 
   demoCallback(fn) {
     setTimeout(() => {
-      fn('hello world');
+      // fn('hello world');
     }, 3000);
   }
 
@@ -107,6 +130,11 @@ export class TaskFormComponent implements OnInit {
 
   }
 
+  search(nic, mobile) {
+    console.log(arguments);
+  }
 
-
+  tmpFormSubmit(form) {
+    console.log(form.value);
+  }
 }

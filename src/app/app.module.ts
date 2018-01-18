@@ -19,6 +19,7 @@ import { EditCricketerQueryParamComponent } from './components/cricketers/edit-c
 import { LoginActivateGuard } from './gurads/login.guard';
 import { CricketerViewDeactivateGurad } from './gurads/deactivate.guard';
 import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
+import { ErrorHandlerComponent } from './components/error-handler/error-handler.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TaskFormComponent } from './components/tasks/task-form/task-form.compon
     LoginComponent,
     EditCricketerComponent,
     EditCricketerQueryParamComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    ErrorHandlerComponent
   ],
   imports: [
     BrowserModule,

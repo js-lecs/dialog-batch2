@@ -1,0 +1,9 @@
+<div *ngIf="formC">
+
+  <div *ngIf="formC.touched &&  formC.errors">
+ 
+    <span style="color:red">
+      {{loadErrors(formC.errors)}}
+    </span>
+  </div>
+</div>

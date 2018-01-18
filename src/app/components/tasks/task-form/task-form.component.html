@@ -1,5 +1,56 @@
 <div class="container">
+
+  <h6> Search </h6>
+
+  <div class="form-group col-md-4">
+    <input #nic placeholder="NIC" type="text" class="form-control">
+
+  </div>
+  <div class="form-group col-md-4">
+    <input #mobile placeholder="Mobile" type="text" class="form-control">
+  </div>
+  <div class="form-group col-md-4">
+    <button (click)="search(nic.value,mobile.value)" class="btn btn-info"> Search</button>
+  </div>
+
+  <hr>
+  <h6> Reactive Forms</h6>
   <form class="form-horizontal" [formGroup]="taskFrom" (submit)="submit()">
+
+
+    <div formGroupName="user">
+      <div class="form-group">
+        <label for=""> Username</label>
+        <input formControlName="username" type="text" class="form-control">
+
+
+        <app-error-handler [formC]="taskFrom.controls['user']['controls']['username']"></app-error-handler>
+
+      </div>
+
+      <div class="form-group">
+        <label for=""> Email</label>
+        <input formControlName="email" type="text" class="form-control">
+
+        <div *ngIf="taskFrom.controls['user'].controls['email'].touched">
+          {{taskFrom.controls['user'].controls['email'].errors | json}}
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for=""> Gender</label>
+        <select formControlName="gender" class="form-control">
+          <option *ngFor="let x of genderList" [value]="x.code"> {{x.displayName}}</option>
+        </select>
+
+        <div *ngIf="taskFrom.controls['user'].controls['gender'].touched">
+          {{taskFrom.controls['user'].controls['gender'].errors | json}}
+        </div>
+
+      </div>
+    </div>
+
 
     <div class="form-group">
       <label for=""> Title</label>
@@ -18,10 +69,50 @@
       </div>
     </div>
 
+    <div formArrayName="subTasks">
+
+      <label> Sub Tasks</label>
+
+      <div class="form-group" *ngFor="let tsk of taskFrom.controls['subTasks'].controls; let i = index">
+        <input type="text" class="form-control" [formControlName]="i">
+      </div>
+
+
+    </div>
+
+
     <div class="form-group">
 
       <button [disabled]="!taskFrom.valid" class="btn btn-info"> Submit</button>
+      <button type="button" (click)="addNewSubTaskControl()" class="btn btn-info"> Add New SubTask Control </button>
     </div>
   </form>
 
+
+  <hr>
+  <h6> Template Driven Forms</h6>
+  <form #form="ngForm" class="form-horizontal" (ngSubmit)="tmpFormSubmit(form)">
+
+    <div class="form-group">
+      <label for=""> Username</label>
+      <input type="text" class="form-control" name="username" [ngModel]="editUserObj.username" required>
+
+    </div>
+
+    <div class="form-group">
+      <label for=""> Email</label>
+      <input type="text" class="form-control" name="email" [ngModel]="editUserObj.email">
+
+
+    </div>
+
+
+
+
+    <div class="form-group">
+
+      <button [disabled]="form.invalid" class="btn btn-info"> Submit</button>
+
+    </div>
+  </form>
 </div>
