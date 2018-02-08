@@ -9,6 +9,7 @@ import { EditCricketerQueryParamComponent } from './components/cricketers/edit-c
 import { LoginActivateGuard } from './gurads/login.guard';
 import { CricketerViewDeactivateGurad } from './gurads/deactivate.guard';
 import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 
 const LAYOUT_ROUTES: Routes = [{
     path: 'home',
@@ -21,6 +22,10 @@ const LAYOUT_ROUTES: Routes = [{
 {
     path: 'tasks',
     component: TaskFormComponent
+},
+{
+    path: 'taskList',
+    component: TaskListComponent
 },
 {
     path: 'cricketers/queryParams',

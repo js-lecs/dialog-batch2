@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 import { APP_ROUTES } from './routing';
 
 
@@ -20,6 +21,8 @@ import { LoginActivateGuard } from './gurads/login.guard';
 import { CricketerViewDeactivateGurad } from './gurads/deactivate.guard';
 import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
 import { ErrorHandlerComponent } from './components/error-handler/error-handler.component';
+import { TaskService } from './services/task.service';
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -34,18 +37,21 @@ import { ErrorHandlerComponent } from './components/error-handler/error-handler.
     EditCricketerComponent,
     EditCricketerQueryParamComponent,
     TaskFormComponent,
-    ErrorHandlerComponent
+    ErrorHandlerComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    HttpModule
   ],
   providers: [
     CricketerService,
     LoginActivateGuard,
-    CricketerViewDeactivateGurad
+    CricketerViewDeactivateGurad,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,20 @@
+<h1> Loaded from Componet</h1>
+<table class="table table-hover">
+  <ng-container *ngFor="let x of taskList">
+    <tr *ngIf="x.subTasks.length > 0">
+      <td> {{ x | json}}</td>
+    </tr>
+  </ng-container>
+
+</table>
+
+
+<h1> Loaded from Observable</h1>
+<table class="table table-hover">
+  <ng-container *ngFor="let x of (taskList$ | async) ">
+    <tr *ngIf="x.subTasks.length > 0">
+      <td> {{ x | json}}</td>
+    </tr>
+  </ng-container>
+
+</table>

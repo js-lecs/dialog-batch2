@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { Task } from '../../models/Task.model';
+import { TaskService } from '../../../services/task.service';
 
 
 
@@ -22,7 +24,7 @@ export class TaskFormComponent implements OnInit {
     email: 'aaa@a.com'
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private taskService: TaskService) {
     this.initForm();
     // this.demoCallback((str) => { alert(str); });
     this.demoPromise()
@@ -62,6 +64,17 @@ export class TaskFormComponent implements OnInit {
   }
   submit() {
     console.log(this.taskFrom.value);
+    if (this.taskFrom.valid) {
+      const task = new Task(this.taskFrom.value);
+      console.log('task Obj', task);
+      this.taskService.createTask(task)
+        .subscribe((data) => {
+          alert('Successfully Added');
+          console.log('task created', data);
+        }, (err) => {
+          console.log('task create error', err);
+        });
+    }
   }
 
   customValidator(c: FormControl) {
