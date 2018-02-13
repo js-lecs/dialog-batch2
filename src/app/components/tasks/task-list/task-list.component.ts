@@ -15,6 +15,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
   taskListSubscription: Subscription;
   taskList$: Observable<any>;
   taskList: Array<Task> = [];
+  search: String = '';
+
+
+  date: Date = new Date();
+  num = 1.234;
   constructor(private taskService: TaskService) {
     this.getTasks();
   }
@@ -27,10 +32,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   getTasks() {
     this.taskListSubscription = this.taskService.getTasks()
-      .subscribe((data: Array<Task>) => {
-        console.log('tasks', data);
-        const tsk: Task = new Task(data[5]);
-        console.log(tsk.getSubTaskLength());
+      .subscribe((data: any) => {
+        console.log('fifth step', data);
+        // const tsk: Task = new Task(data[5]);
+        // console.log(tsk.getSubTaskLength());
         this.taskList = data;
       });
 

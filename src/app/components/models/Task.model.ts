@@ -10,11 +10,27 @@ export class Task {
         username: String;
     };
 
-    constructor(data: any) {
+    constructor(data: any, action: String = 'create') {
+        switch (action) {
+            case 'create':
+                this.create(data);
+                break;
+            case 'init':
+                this.init(data);
+                break;
+        }
+    }
+
+    create(data: any) {
         this.title = data.title;
         this.description = data.description;
         this.subTasks = data.subTasks;
         this.user = data.user;
+    }
+
+    init(data: any) {
+        this.create(data);
+        this._id = data._id;
     }
 
     getSubTaskLength() {

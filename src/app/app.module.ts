@@ -24,6 +24,9 @@ import { ErrorHandlerComponent } from './components/error-handler/error-handler.
 import { TaskService } from './services/task.service';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 
+import { NgDatepickerModule } from 'ng2-datepicker';
+import { FilterPipe } from './pipes/filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,14 +41,16 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
     EditCricketerQueryParamComponent,
     TaskFormComponent,
     ErrorHandlerComponent,
-    TaskListComponent
+    TaskListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES),
-    HttpModule
+    HttpModule,
+    NgDatepickerModule
   ],
   providers: [
     CricketerService,

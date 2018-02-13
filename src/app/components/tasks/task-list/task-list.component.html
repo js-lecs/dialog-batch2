@@ -10,11 +10,24 @@
 
 
 <h1> Loaded from Observable</h1>
+<input type="text" class="form-control" placeholder="search" [(ngModel)]="search">
 <table class="table table-hover">
-  <ng-container *ngFor="let x of (taskList$ | async) ">
+  <ng-container *ngFor="let x of (taskList$ | async | filter:search:'title') ">
     <tr *ngIf="x.subTasks.length > 0">
-      <td> {{ x | json}}</td>
+      <td> {{ x.title  }}</td>
+      <td> {{ x.description}}</td>
     </tr>
   </ng-container>
 
 </table>
+
+<ng-datepicker [headless]="false" [(ngModel)]="date"> </ng-datepicker>
+
+
+<h3>Default Pipes</h3>
+
+<h6> Number: {{num | number:'3.2-2'}} </h6>
+
+<h6> Date: {{date | date:'yyyy-MM-dd'}} </h6>
+
+<h6> Currency: </h6>
