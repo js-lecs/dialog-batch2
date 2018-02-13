@@ -1,0 +1,10 @@
+
+version: '3'
+services:
+  dialog:
+    container_name: dialog
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - ./src/:/var/www/dialog/src/
