@@ -24,7 +24,7 @@
         <input formControlName="username" type="text" class="form-control">
 
 
-        <app-error-handler [formC]="taskFrom.controls['user']['controls']['username']"></app-error-handler>
+        <app-error-handler [formC]="taskFrom['controls']['user']['controls']['username']"></app-error-handler>
 
       </div>
 
@@ -32,8 +32,8 @@
         <label for=""> Email</label>
         <input formControlName="email" type="text" class="form-control">
 
-        <div *ngIf="taskFrom.controls['user'].controls['email'].touched">
-          {{taskFrom.controls['user'].controls['email'].errors | json}}
+        <div *ngIf="taskFrom['controls']['user']['controls']['email'].touched">
+          {{taskFrom['controls']['user']['controls']['email']['errors'] | json}}
         </div>
 
       </div>
@@ -44,8 +44,8 @@
           <option *ngFor="let x of genderList" [value]="x.code"> {{x.displayName}}</option>
         </select>
 
-        <div *ngIf="taskFrom.controls['user'].controls['gender'].touched">
-          {{taskFrom.controls['user'].controls['gender'].errors | json}}
+        <div *ngIf="taskFrom['controls']['user']['controls']['gender'].touched">
+          {{taskFrom['controls']['user']['controls']['gender'].errors | json}}
         </div>
 
       </div>
@@ -56,16 +56,16 @@
       <label for=""> Title</label>
       <input formControlName="title" type="text" class="form-control">
 
-      <div *ngIf="taskFrom.controls['title'].touched">
-        {{taskFrom.controls['title'].errors | json}}
+      <div *ngIf="taskFrom['controls']['title'].touched">
+        {{taskFrom['controls']['title'].errors | json}}
       </div>
 
     </div>
     <div class="form-group">
       <label for=""> Description</label>
       <textarea required formControlName="description" type="text" class="form-control"></textarea>
-      <div *ngIf="taskFrom.controls['description'].touched">
-        {{taskFrom.controls['description'].errors | json}}
+      <div *ngIf="taskFrom['controls']['description'].touched">
+        {{taskFrom['controls']['description'].errors | json}}
       </div>
     </div>
 
@@ -73,7 +73,7 @@
 
       <label> Sub Tasks</label>
 
-      <div class="form-group" *ngFor="let tsk of taskFrom.controls['subTasks'].controls; let i = index">
+      <div class="form-group" *ngFor="let tsk of taskFrom['controls']['subTasks']['controls']; let i = index">
         <input type="text" class="form-control" [formControlName]="i">
       </div>
 
