@@ -10,6 +10,7 @@ import { LoginActivateGuard } from './gurads/login.guard';
 import { CricketerViewDeactivateGurad } from './gurads/deactivate.guard';
 import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+import { DirectiveExampleComponent } from './components/directive-example/directive-example.component';
 
 const LAYOUT_ROUTES: Routes = [{
     path: 'home',
@@ -30,6 +31,10 @@ const LAYOUT_ROUTES: Routes = [{
 {
     path: 'cricketers/queryParams',
     component: EditCricketerQueryParamComponent
+},
+{
+    path: 'directive-example',
+    component: DirectiveExampleComponent
 },
 {
     path: 'cricketers/:id',

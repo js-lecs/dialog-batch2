@@ -6,6 +6,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
+//     [{
+//         name: 'nilesh',
+//         age: 24
+//     }, {
+//             name: 'abc',
+//             age: 24
+//         },
+// ]
     transform(value: Array<any>, search: String, searchKey: string) {
 
         if (!value) {

@@ -1,14 +1,12 @@
 import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('my-app App', () => {
-  let page: AppPage;
+describe('directiveExample Page App', () => {
+  it('should have title', () => {
+    browser.executeScript('window.localStorage.setItem("loggedIn","true");');
+    browser.get('/app/directive-example');
+    const title = element(by.css('h3')).getText();
 
-  beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(title).toEqual('directive-example works!');
   });
 });

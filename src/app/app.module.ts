@@ -26,6 +26,9 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
 
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { FilterPipe } from './pipes/filter.pipe';
+import { DirectiveExampleComponent } from './components/directive-example/directive-example.component';
+import { HoverDirective } from './directives/hover.directive';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     TaskFormComponent,
     ErrorHandlerComponent,
     TaskListComponent,
-    FilterPipe
+    FilterPipe,
+    DirectiveExampleComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
